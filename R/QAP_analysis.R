@@ -12,6 +12,7 @@
 #' @export
 
 QAP_analysis <- function(group1, group2, plot=FALSE){
+  library(sna)
   combo_groups <- list(max (group1)-group1, max(group2) - group2) #list of groups' dissimilarity matrices#
   qap <- qaptest(combo_groups, gcor, g1=1, g2=2)
   if (plot==TRUE){
