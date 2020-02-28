@@ -6,9 +6,9 @@
 #' @param plot_title A string. The title of the MDS plot.  Defaults to NULL.  If NULL, plot is untitled.
 #' @return A list of two: 1) and hclust object that describes the tree produced by the clustering process.  See \code{hclust} for details. 2) A ggplot object depicting the resulting dendrogram from the clustering.
 #' @export
-cluster_piles <- function(aggregate_dissimilarity,method="mcquitty",plot=TRUE,plot_title=NULL, reverse=FALSE){
+cluster_piles <- function(aggregate_dissimilarity,method="mcquitty",plot=TRUE,plot_title=NULL, reverse_chart=FALSE){
   hc <- as.dendrogram(hclust(dist(t(aggregate_dissimilarity)),method = method))
-  if(reverse==TRUE){
+  if(reverse_chart==TRUE){
     hc <- rev(hc)
   }
   library(ggdendro)
