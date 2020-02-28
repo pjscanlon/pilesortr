@@ -6,9 +6,11 @@
 #' @param plot_type A string. "Text" plots the card names; "Point" plots points; "Both" plots both text and points.
 #' @return A list of two: 1) A matrix with k=\code{dimensions} columns and rows of n=number of items in pile sort. 2) A ggplot object depicting the MDS
 #' @export
-MDS_piles <- function(aggregate_dissimilarity, plot = TRUE, plot_title = NULL, dimensions = 2, plot_type = "None"){
+MDS_piles <- function(aggregate_dissimilarity, plot = TRUE, plot_title = NULL, dimensions = 2, plot_type = "None",
+                      reverse_chart = FALSE){
   require(ggplot2)
   mds <- cmdscale(aggregate_dissimilarity, k = dimensions)
+  if(reverse_chart==TRUE){mds = mds* -1}
   mds_plot <- ggplot(as.data.frame(mds), aes(V1, -V2, label = rownames(mds))) +
     theme_minimal() + xlab('') + ylab('') +
     scale_y_continuous(breaks = NULL) + scale_x_continuous(breaks = NULL)+
