@@ -11,6 +11,7 @@ cluster_piles <- function(aggregate_dissimilarity,method="mcquitty",plot=TRUE,pl
   if(reverse==TRUE){
     hc <- rev(hc)
   }
+  library(ggdendro)
   cp <- ggdendrogram(hc,rotate = T)+ggtitle(plot_title) + theme(plot.title = element_text(hjust = 0.5))
   if(plot==TRUE){
     print(cp)
